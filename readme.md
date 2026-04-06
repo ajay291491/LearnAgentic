@@ -48,6 +48,12 @@ Reference - Anthropic Guide for Agentic - https://www.anthropic.com/engineering/
 - Finally all output will be synchorized by another LLM 
 ![img.png](Images/Orchestrator.png)
 
+#### Evaluator and Optimizer 
+- In this architecture one LLM creates responses 
+- Another one repeatedly evaluates the response being created 
+
+![img.png](Images/evaluator_Optimizer.png)
+
 
 
 
