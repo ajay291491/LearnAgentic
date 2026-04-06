@@ -22,7 +22,7 @@ Reference - Anthropic Guide for Agentic - https://www.anthropic.com/engineering/
 - Workflows 
 - MCP 
 
-### What are Different workflows 
+### Workflows - What are Different Types 
 #### Chaining Workflow
   - Here each input goes through a LLM call then we will have a backend check to validate its on track and direct it to next step
   - This can be used when task can be easily decomposed into fixed sub-tasks, more like if then conditions  
@@ -51,10 +51,19 @@ Reference - Anthropic Guide for Agentic - https://www.anthropic.com/engineering/
 #### Evaluator and Optimizer 
 - In this architecture one LLM creates responses 
 - Another one repeatedly evaluates the response being created 
+- A very good use case while writing white papers
 
 ![img.png](Images/evaluator_Optimizer.png)
 
 
+### Why Agents 
+- Agents can be used for open-ended problems, where there is no binary decission needed or no definite answer yet.
+- This will be idle when we do not know definite number of steps required or definite path
+- During execution agents take input from human and ask for further clarification 
+- Then while reasoning it gains more facts from the enviroments its connecting like documents or tools 
+- Once the task is clear it operates indipendatly and provide desired results 
 
+![img.png](Images/Autonomous_agent.png)
 
-
+Below is sample workflow of a coding agent
+![img.png](https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F4b9a1f4eb63d5962a6e1746ac26bbc857cf3474f-2400x1666.png&w=3840&q=75) 
