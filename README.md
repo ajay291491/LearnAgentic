@@ -92,8 +92,26 @@ This is done  by using a technique called **grounding** which brings in all addi
 Couple examples for this use case is
 - News Feeds from LLM
 - Corporate Knowledgebase integration with LLM for internal chatbots
+
+Below table explains with and without RAG how it works 
+
 ![img.png](Images/RAG.png)
 
+Below is a sample RAG architecture 
+
+![img.png](Images/RAG_Architecture.png)
+
+#### How does Retrieval-Augmented Generation work?
+RAGs operate with a few main steps to help enhance generative AI outputs:
+- Retrieval and pre-processing: RAGs leverage powerful search algorithms to query external data, such as web pages, knowledge bases, and databases. Once retrieved, the relevant information undergoes pre-processing, including tokenization, stemming, and removal of stop words.
+- Grounded generation: The pre-processed retrieved information is then seamlessly incorporated into the pre-trained LLM. This integration enhances the LLM's context, providing it with a more comprehensive understanding of the topic. This augmented context enables the LLM to generate more precise, informative, and engaging responses.
+
+Reference 
+- https://cloud.google.com/use-cases/retrieval-augmented-generation?hl=en
+- https://aws.amazon.com/what-is/retrieval-augmented-generation/
 
 ### LLM Tools
+
+
+
 
