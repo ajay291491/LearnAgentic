@@ -67,3 +67,17 @@ Reference - Anthropic Guide for Agentic - https://www.anthropic.com/engineering/
 
 Below is sample workflow of a coding agent
 ![img.png](https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F4b9a1f4eb63d5962a6e1746ac26bbc857cf3474f-2400x1666.png&w=3840&q=75) 
+
+### Agentic Framework
+
+There are several AI frameworks available for you to pick depends on your use cases, they are listed below based on their level of **complexity** from easier (1) to complex (6).
+
+1. No Framework & use your own glue code
+2. [MCP (Model Context Protocol)](https://modelcontextprotocol.io/docs/getting-started/intro)
+3. [Crew AI](https://docs.crewai.com/en/introduction)
+4. [OpenAI Agents SDK](https://developers.openai.com/api/docs/guides/agents-sdk)
+5. [Microsoft - AutoGen](https://www.microsoft.com/en-us/research/project/autogen/)
+6. [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview?_gl=1*1vsol4*_gcl_au*MjEwMjIxMjk4Ni4xNzc2MTc3MDcx*_ga*NDY2MTA2NjI0LjE3NzYxNzcwNzI.*_ga_47WX3HKKY2*czE3NzYxNzcwNzIkbzEkZzEkdDE3NzYxNzcwODAkajUyJGwwJGgw)
+
+
+
