@@ -20,7 +20,9 @@ Reference - Anthropic Guide for Agentic - https://www.anthropic.com/engineering/
 
 - Agents
 - Workflows 
-- MCP 
+- Frameworks
+- Resources
+- Tools
 
 ### Workflows - What are Different Types 
 #### Chaining Workflow
@@ -68,7 +70,7 @@ Reference - Anthropic Guide for Agentic - https://www.anthropic.com/engineering/
 Below is sample workflow of a coding agent
 ![img.png](https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F4b9a1f4eb63d5962a6e1746ac26bbc857cf3474f-2400x1666.png&w=3840&q=75) 
 
-### Agentic Framework
+### Agentic Frameworks
 
 There are several AI frameworks available for you to pick depends on your use cases, they are listed below based on their level of **complexity** from easier (1) to complex (6).
 
@@ -79,5 +81,19 @@ There are several AI frameworks available for you to pick depends on your use ca
 5. [Microsoft - AutoGen](https://www.microsoft.com/en-us/research/project/autogen/)
 6. [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview?_gl=1*1vsol4*_gcl_au*MjEwMjIxMjk4Ni4xNzc2MTc3MDcx*_ga*NDY2MTA2NjI0LjE3NzYxNzcwNzI.*_ga_47WX3HKKY2*czE3NzYxNzcwNzIkbzEkZzEkdDE3NzYxNzcwODAkajUyJGwwJGgw)
 
+### LLM Resources
 
+Resources provide ability for LLM to read additional data sources which will help to provide  additional context to the response LLM is already providing.  
+
+### LLM RAG (Retrieval Augmented Generation)
+
+Retrieval Augmented Generation (RAG) is a technique used to make the LLM response in right latest context by bringing additional data sources while processing the request. 
+This is done  by using a technique called **grounding** which brings in all additional data into LLM context for response.  
+Couple examples for this use case is
+- News Feeds from LLM
+- Corporate Knowledgebase integration with LLM for internal chatbots
+![img.png](Images/RAG.png)
+
+
+### LLM Tools
 
