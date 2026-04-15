@@ -114,6 +114,15 @@ Reference
 
 #### LLM Tools
 
+LLM Tools enable LLMs to take real world actions by connecting to tools. This solves the problem of LLMs to deal with real time data and take actions such as 
+
+- Write to a database 
+- Call a weather API to return the weather for a place.
+- etc 
+
+Reference
+- https://vercel.com/kb/guide/what-is-an-llm-tool
+
 
 
 
