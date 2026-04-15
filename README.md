@@ -81,11 +81,13 @@ There are several AI frameworks available for you to pick depends on your use ca
 5. [Microsoft - AutoGen](https://www.microsoft.com/en-us/research/project/autogen/)
 6. [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview?_gl=1*1vsol4*_gcl_au*MjEwMjIxMjk4Ni4xNzc2MTc3MDcx*_ga*NDY2MTA2NjI0LjE3NzYxNzcwNzI.*_ga_47WX3HKKY2*czE3NzYxNzcwNzIkbzEkZzEkdDE3NzYxNzcwODAkajUyJGwwJGgw)
 
-### LLM Resources
+### Improving the expertise of LLMs
+
+#### LLM Resources
 
 Resources provide ability for LLM to read additional data sources which will help to provide  additional context to the response LLM is already providing.  
 
-### LLM RAG (Retrieval Augmented Generation)
+#### LLM RAG (Retrieval Augmented Generation)
 
 Retrieval Augmented Generation (RAG) is a technique used to make the LLM response in right latest context by bringing additional data sources while processing the request. 
 This is done  by using a technique called **grounding** which brings in all additional data into LLM context for response.  
@@ -110,7 +112,7 @@ Reference
 - https://cloud.google.com/use-cases/retrieval-augmented-generation?hl=en
 - https://aws.amazon.com/what-is/retrieval-augmented-generation/
 
-### LLM Tools
+#### LLM Tools
 
 
 
