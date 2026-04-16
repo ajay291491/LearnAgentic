@@ -1,3 +1,5 @@
+# Importing required Python Modules
+
 import os
 import json
 from  dotenv import load_dotenv
@@ -5,15 +7,18 @@ from openai import OpenAI, api_key
 import gradio as gr
 import requests
 
+# Loading required variables
 load_dotenv(override=True)
 openai_key = os.getenv("OPENAI_API_KEY")
 weather_key = os.getenv("OPEN_WEATHER_API_KEY")
 
-print(f"OpenAI Key       : {openai_key[:5]}")
-print(f"Open Weather key : {weather_key[:5]}")
+# print(f"OpenAI Key       : {openai_key[:5]}")
+# print(f"Open Weather key : {weather_key[:5]}")
 
+# Initializing OpenAI SDK
 openai=OpenAI()
 
+# Defining function to call weather data from OpenWeather API
 def get_weather_data(latitude, longitude):
     """
     :param latitude: Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around,
@@ -34,6 +39,7 @@ def get_weather_data(latitude, longitude):
     except Exception as error:
         print(f"Error : while connecting to OpenWeather API : {error}")
 
+# Defining tool calling schema for LLM with function  get_weather_data
 
 get_weather_data_tool = {
     "name": "get_weather_data",
@@ -57,6 +63,7 @@ get_weather_data_tool = {
 
 tools = [{"type": "function", "function": get_weather_data_tool }]
 
+# Defining system prompt to control the behavior of LLM
 system_prompt = """You are a travel agent named Aparna trying to guide your customer to visit places in a city and its weather forecast.
                     You will need to ask your customer the city they are planning to travel.
                     Then need to find the find latitude and longitude coordinates for that city and call the get_weather_data tool with those coordinates.
@@ -65,8 +72,7 @@ system_prompt = """You are a travel agent named Aparna trying to guide your cust
                     Also best travel agent booking platforms available to book this trip which will save money for them
                     """
 
-
-
+# Defining chat function
 def chat(message, history):
     print('calling 1')
     messages = [{"role": "system", "content": system_prompt}] + history +  [{"role": "user", "content": message}]
@@ -104,5 +110,5 @@ def chat(message, history):
             done = True
     return response.choices[0].message.content
 
-
+# Initializing Chat function
 gr.ChatInterface(chat).launch()
