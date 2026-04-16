@@ -103,6 +103,8 @@ Below is a sample RAG architecture
 
 ![img.png](Images/RAG_Architecture.png)
 
+Sample code : https://github.com/ajay291491/LearnAgentic/tree/main/ConceptCodes/LLMRAGAugmentation
+
 ##### How does Retrieval-Augmented Generation work?
 RAGs operate with a few main steps to help enhance generative AI outputs:
 - Retrieval and pre-processing: RAGs leverage powerful search algorithms to query external data, such as web pages, knowledge bases, and databases. Once retrieved, the relevant information undergoes pre-processing, including tokenization, stemming, and removal of stop words.
@@ -123,6 +125,7 @@ LLM Tools enable LLMs to take real world actions by connecting to tools. This so
 Reference
 - https://vercel.com/kb/guide/what-is-an-llm-tool
 
+Sample Code : https://github.com/ajay291491/LearnAgentic/tree/main/ConceptCodes/LLMToolCalling
 
 #### LLM Prompting
 Prompting is the process of designing and structuring the input given to a language model (LLM) to elicit a desired response. Effective prompting can significantly enhance the quality and relevance of the output.
