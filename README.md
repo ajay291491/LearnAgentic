@@ -122,10 +122,9 @@ LLM Tools enable LLMs to take real world actions by connecting to tools. This so
 - Call a weather API to return the weather for a place.
 - etc 
 
-Reference
-- https://vercel.com/kb/guide/what-is-an-llm-tool
-
+Reference   :  https://vercel.com/kb/guide/what-is-an-llm-tool
 Sample Code : https://github.com/ajay291491/LearnAgentic/tree/main/ConceptCodes/LLMToolCalling
+Sample App in Hugging Face : https://huggingface.co/spaces/ajay291491/LLMToolCalling 
 
 #### LLM Prompting
 Prompting is the process of designing and structuring the input given to a language model (LLM) to elicit a desired response. Effective prompting can significantly enhance the quality and relevance of the output.
