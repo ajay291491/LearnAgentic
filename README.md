@@ -1,4 +1,4 @@
-### What is AI Agents ?
+### Chapter 01 -  What is AI Agents ?
 Basic building block of agentic is; 
 - its ability to use LLM to augment the retrival from input, 
 - process them using a tool and them store the state using memory 
@@ -145,4 +145,17 @@ There are mainly 2 types of prompting techniques
 
 Reference : https://cloud.google.com/discover/what-is-prompt-engineering?hl=en
 
+### Chapter 02 -  OpenAI SDK for Agents
 
+Lightweight SDK 
+
+Understand the terms 
+- Agents 
+- Handsoffs
+- Guardrails
+
+steps involved in creating an agent using OpenAI SDK
+
+1. Create an Agent
+1. use with trace() to track aganet 
+2. Call runner.run() to run agent
