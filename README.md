@@ -147,15 +147,17 @@ Reference : https://cloud.google.com/discover/what-is-prompt-engineering?hl=en
 
 ### Chapter 02 -  OpenAI SDK for Agents
 
-Lightweight SDK 
+OpenAI Smart SDK is a Lightweight SDK which can be used to create agents using OpenAI models. It provides a simple and intuitive interface for creating agents that can interact with the world, use tools, and learn from their experiences.
 
-Understand the terms 
-- Agents 
-- Handsoffs
-- Guardrails
+#### Understand the Terms 
+- Agents : Agents represnet LLMs
+- Handsoffs : Represent interactiion between agents and tools or resources
+- Guardrails : Guardrails are a set of rules or constraints that govern the behavior of an agent. 
+  - They are designed to ensure that the agent operates within certain boundaries and does not engage in harmful or undesirable behavior. 
+  - Guardrails can be implemented in various ways, such as through programming logic, machine learning models, or human oversight.
 
-steps involved in creating an agent using OpenAI SDK
+#### Key Steps involved 
 
-1. Create an Agent
-1. use with trace() to track aganet 
-2. Call runner.run() to run agent
+1. Create an instance Agent
+2. use with trace() to track agent telemetry and debug
+3. Call runner.run() to runs agent (using python asyncio or sync) and get response
