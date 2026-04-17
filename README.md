@@ -160,4 +160,5 @@ OpenAI Smart SDK is a Lightweight SDK which can be used to create agents using O
 
 1. Create an instance Agent
 2. use with trace() to track agent telemetry and debug
+   * Trace will be available at https://platform.openai.com/logs?api=traces
 3. Call runner.run() to runs agent (using python asyncio or sync) and get response
