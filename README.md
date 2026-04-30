@@ -149,6 +149,8 @@ Reference : https://cloud.google.com/discover/what-is-prompt-engineering?hl=en
 
 OpenAI Smart SDK is a Lightweight SDK which can be used to create agents using OpenAI models. It provides a simple and intuitive interface for creating agents that can interact with the world, use tools, and learn from their experiences.
 
+Reference : https://developers.openai.com/api/docs/guides/agents
+
 #### Understand the Terms 
 
 ##### Agents 
