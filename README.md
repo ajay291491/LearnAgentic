@@ -150,6 +150,7 @@ Reference : https://cloud.google.com/discover/what-is-prompt-engineering?hl=en
 OpenAI Smart SDK is a Lightweight SDK which can be used to create agents using OpenAI models. It provides a simple and intuitive interface for creating agents that can interact with the world, use tools, and learn from their experiences.
 
 #### Understand the Terms 
+
 ##### Agents 
 An agent is the core unit of an SDK-based workflow. It packages a model, instructions, and optional runtime behavior such as tools, guardrails, MCP servers, handoffs, and structured outputs.
 
@@ -176,7 +177,105 @@ with trace("Choose Your EV"):
     output = result.final_output
     display(Markdown(output))
 ```
-- Handsoffs : Represent interactiion between agents and tools or resources
+
+##### Tools
+Tools are external functions or APIs that an agent can call to perform specific tasks or retrieve information. 
+  - They allow agents to interact with the world and access information that is not available in the model's training data. 
+  - For example, an agent could use a tool to access a weather API to get the current weather for a specific location, or it could use a tool to access a database to retrieve information about a customer.
+
+There are multiple ways you can call tools from an agent, you can call them directly from the agent instructions or you can define them as a tool and then provide the tool definition to the agent. 
+
+Below is an example of defining a tool and providing the tool definition to the agent.
+
+```python
+
+# Defining the tool for LLM to call and get weather data (This is the tool definition which we will provide to LLM and it will call this tool with appropriate arguments when it needs to get weather data)
+def get_weather_data(latitude, longitude):
+  """
+  :param latitude: Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around,
+  :param longitude: Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around,
+  :return: weather outlook
+  """
+  weather_url = "https://api.openweathermap.org/data/2.5/weather"
+  params = {
+    "lat" :round(float(latitude), 2),
+    "lon" :round(float(longitude), 2),
+    "exclude": "minutely,hourly,daily,alerts",
+    "appid" : weather_key,
+    "units": "metric"
+  }
+  try:
+    response = requests.get(weather_url, params=params)
+    data = response.json()
+    return data
+  except Exception as error:
+    print(f"Error : while connecting to OpenWeather API : {error}")
+
+get_weather_data_tool = {
+    "name": "get_weather_data",
+    "description": "Use this tool to get weather data for a specific latitude and longitude",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "latitude": {
+                "type": "number",
+                "description": "Latitude, decimal (-90; 90)."
+            },
+            "longitude": {
+                "type": "number",
+                "description": "Longitude, decimal (-180; 180)."
+            }
+        },
+        "required": ["latitude", "longitude"],
+        "additionalProperties": False
+    }
+}
+
+tools = [{"type": "function", "function": get_weather_data_tool }]
+
+agent = Agent(
+  name="Weather Agent",
+  instructions="You are a helpful assistant that provides weather information. When asked for weather data, you should call the get_weather_data tool with the appropriate latitude and longitude. For example, if the user asks for the weather in London, you should call get_weather_data with the latitude and longitude of London.",
+  model="gpt-4o-mini",
+  tools=weather_tools
+)
+
+```
+
+There is another easy way of calling the agent tools, which is by directly calling the tool from the agent instructions. Below is an example of how to call the tool directly from the agent instructions. 
+
+```python
+@function_tool
+def get_weather_data(latitude, longitude):
+  """
+  :param latitude: Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around,
+  :param longitude: Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around,
+  :return: weather outlook
+  """
+  weather_url = "https://api.openweathermap.org/data/2.5/weather"
+  params = {
+    "lat" :round(float(latitude), 2),
+    "lon" :round(float(longitude), 2),
+    "exclude": "minutely,hourly,daily,alerts",
+    "appid" : weather_key,
+    "units": "metric"
+  }
+  try:
+    response = requests.get(weather_url, params=params)
+    data = response.json()
+    return data
+  except Exception as error:
+    print(f"Error : while connecting to OpenWeather API : {error}")
+
+agent = Agent(
+    name="Weather Agent",
+    instructions="You are a helpful assistant that provides weather information. When asked for weather data, you should call the get_weather_data tool with the appropriate latitude and longitude. For example, if the user asks for the weather in London, you should call get_weather_data with the latitude and longitude of London.",
+    model="gpt-4o-mini",
+    tools=weather_tools
+)
+````
+
+##### Handsoffs : Represent interactiion between agents and tools or resources
 
 
 - Guardrails : Guardrails are a set of rules or constraints that govern the behavior of an agent. 
