@@ -150,8 +150,33 @@ Reference : https://cloud.google.com/discover/what-is-prompt-engineering?hl=en
 OpenAI Smart SDK is a Lightweight SDK which can be used to create agents using OpenAI models. It provides a simple and intuitive interface for creating agents that can interact with the world, use tools, and learn from their experiences.
 
 #### Understand the Terms 
-- Agents : Agents represnet LLMs
+##### Agents 
+An agent is the core unit of an SDK-based workflow. It packages a model, instructions, and optional runtime behavior such as tools, guardrails, MCP servers, handoffs, and structured outputs.
+
+While defining an agent, you can specify the model to use, the instructions for the agent, and any additional behavior you want to include. For example, you can specify that the agent should use a specific tool or that it should follow certain guardrails.
+
+Example : below is an example of defining an agent using OpenAI SDK for Agents. In this example, we are creating an agent called "EV Sales Assistant" that will check all EV benchmarks available and advise customers on the top 3 models to choose with their 4-year resale value. We are using the "gpt-4o-mini" model for this agent.
+```python
+##### Defining an agent
+
+agent = Agent(
+    name="EV Sales Assistant",
+    instructions="You must check all EV benchmarks available to you and advise customer on top 3 models to choose with its 4 year resale value",
+    model="gpt-4o-mini"
+)
+```
+
+```python
+# Invoking an agent with Trace (trace available at https://platform.openai.com/logs?api=traces)
+
+with trace("Choose Your EV"):
+    result = await Runner.run(agent, "What are the top EV models available in UK under 25K budget")
+    output = result.final_output
+    display(Markdown(output))
+```
 - Handsoffs : Represent interactiion between agents and tools or resources
+
+
 - Guardrails : Guardrails are a set of rules or constraints that govern the behavior of an agent. 
   - They are designed to ensure that the agent operates within certain boundaries and does not engage in harmful or undesirable behavior. 
   - Guardrails can be implemented in various ways, such as through programming logic, machine learning models, or human oversight.
@@ -162,3 +187,11 @@ OpenAI Smart SDK is a Lightweight SDK which can be used to create agents using O
 2. use with trace() to track agent telemetry and debug
    * Trace will be available at https://platform.openai.com/logs?api=traces
 3. Call runner.run() to runs agent (using python asyncio or sync) and get response
+
+
+### Chapter 07 -  Utilities for Agentic Development
+
+#### Codex 
+Codex is a powerful tool that can be used to generate code based on natural language prompts. It can be used to create agents that can write code, debug code, and even learn from code.
+
+Reference : https://developers.openai.com/codex
