@@ -155,7 +155,9 @@ An agent is the core unit of an SDK-based workflow. It packages a model, instruc
 
 While defining an agent, you can specify the model to use, the instructions for the agent, and any additional behavior you want to include. For example, you can specify that the agent should use a specific tool or that it should follow certain guardrails.
 
-Example : below is an example of defining an agent using OpenAI SDK for Agents. In this example, we are creating an agent called "EV Sales Assistant" that will check all EV benchmarks available and advise customers on the top 3 models to choose with their 4-year resale value. We are using the "gpt-4o-mini" model for this agent.
+Example : below is an example of defining an agent using OpenAI SDK for Agents. 
+
+Notebook available at : https://github.com/ajay291491/LearnAgentic/blob/main/ConceptCodes/OpeniAIAgentSDK/ChooseYourEV-BasicAgent.ipynb
 ```python
 ##### Defining an agent
 
