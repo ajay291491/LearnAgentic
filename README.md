@@ -271,7 +271,7 @@ agent = Agent(
     name="Weather Agent",
     instructions="You are a helpful assistant that provides weather information. When asked for weather data, you should call the get_weather_data tool with the appropriate latitude and longitude. For example, if the user asks for the weather in London, you should call get_weather_data with the latitude and longitude of London.",
     model="gpt-4o-mini",
-    tools=weather_tools
+    tools=get_weather_data
 )
 ````
 
