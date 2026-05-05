@@ -277,10 +277,57 @@ agent = Agent(
 )
 ````
 
-##### Handsoffs : Represent interactiion between agents and tools or resources
+##### Handsoffs
+Use hanoffs when you want to transfer control of a conversation from one agent to another, or from an agent to a human. 
+  - This can be useful in situations where one agent is better suited to handle a specific task or when a human needs to intervene in the conversation. 
+  - Handsoffs can be implemented in various ways, such as through programming logic, machine learning models, or human oversight.
 
+Example : Below is an example of how to use handsoffs in OpenAI SDK for Agents. 
 
-- Guardrails : Guardrails are a set of rules or constraints that govern the behavior of an agent. 
+```python
+from agents import Agent, Runner, handoff, function_tool
+
+# 1. Define the specialist agent
+specialist_agent = Agent(
+  name="Specialist",
+  instructions="Handle complex technical queries."
+)
+
+# 2. Create the handoff tool with 'needs_approval' set to True
+# This is the "gate" that stops the workflow for human oversight.
+handoff_to_specialist = handoff(
+  specialist_agent,
+  needs_approval=True  # This triggers the HITL flow
+)
+
+# 3. Define the primary agent
+triage_agent = Agent(
+  name="Triage",
+  instructions="Determine if the user needs a specialist. If so, hand off.",
+  handoffs=[handoff_to_specialist]
+)
+
+# 4. Running the workflow
+# First pass: The agent will decide to hand off, but the runner will pause.
+result = Runner.run(triage_agent, input="I need technical help with my server.")
+
+if result.interruptions:
+  print("Workflow paused for human oversight.")
+  for interruption in result.interruptions:
+    # In a real app, you'd show this in a UI for a human to click 'Approve'
+    print(f"Pending Approval: {interruption.tool_name}")
+
+  # Simulate human approval
+  state = result.to_state()
+  state.approve(result.interruptions[0])
+
+  # Second pass: Resume the workflow
+  final_result = Runner.run(triage_agent, state=state)
+  print(f"Specialist says: {final_result.final_output}")
+```
+
+##### Guardrails 
+Guardrails are a set of rules or constraints that govern the behavior of an agent. 
   - They are designed to ensure that the agent operates within certain boundaries and does not engage in harmful or undesirable behavior. 
   - Guardrails can be implemented in various ways, such as through programming logic, machine learning models, or human oversight.
 
