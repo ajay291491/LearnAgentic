@@ -331,10 +331,25 @@ Guardrails are a set of rules or constraints that govern the behavior of an agen
   - They are designed to ensure that the agent operates within certain boundaries and does not engage in harmful or undesirable behavior. 
   - Guardrails can be implemented in various ways, such as through programming logic, machine learning models, or human oversight.
 
-#### Key Steps involved 
+Reference :https://developers.openai.com/api/docs/guides/agents/guardrails-approvals
+
+#### Human in the Loop (HITL)
+Human in the Loop (HITL) is a concept where human intervention is integrated into the workflow of an agent. 
+  - This can be useful in situations where the agent is not confident in its response or when a human needs to review the agent's output before it is finalized.
+  - HITL can be implemented in various ways, such as through programming logic, machine learning models, or human oversight. 
+  - For example, an agent could be designed to pause its workflow and request human approval before proceeding with a certain action.
+
+Reference : https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#pause-for-human-review
+
+#### Key Steps involved in defining an agent using OpenAI SDK for Agents
 
 1. Create an instance Agent
-2. use with trace() to track agent telemetry and debug
+2. Define the instructions for the agent, which will guide its behavior and responses. This can include specific tasks, rules, or guidelines that the agent should follow.
+3. Optionally, you can also define tools that the agent can use to perform specific tasks or retrieve information. Tools can be defined as functions or APIs that the agent can call when needed.
+4. Optionally, you can also define handoffs that allow the agent to transfer control of a conversation to another agent or to a human. This can be useful in situations where one agent is better suited to handle a specific task or when a human needs to intervene in the conversation.
+5. Optionally, you can also define guardrails that set rules or constraints on the agent's behavior. Guardrails can help ensure that the agent operates within certain boundaries and does not engage in harmful or undesirable behavior.
+6. HTL can be implemented by setting the needs_approval flag to True in the handoff definition, which will pause the workflow and require human approval before proceeding.
+7. Use with trace() to track agent telemetry and debug
    * Trace will be available at https://platform.openai.com/logs?api=traces
 3. Call runner.run() to runs agent (using python asyncio or sync) and get response
 
