@@ -360,3 +360,48 @@ Reference : https://developers.openai.com/api/docs/guides/agents/guardrails-appr
 Codex is a powerful tool that can be used to generate code based on natural language prompts. It can be used to create agents that can write code, debug code, and even learn from code.
 
 Reference : https://developers.openai.com/codex
+
+
+### Chapter 08 : MCP (Model Context protocol)
+Model Context Protocol (MCP) is a standard for how models can access and use external context when generating responses. It provides a way for models to retrieve relevant information from external sources, such as databases, APIs, or other models, and use that information to generate more accurate and relevant responses.
+Reference : https://modelcontextprotocol.io/docs/getting-started/intro
+MCP allows you to connect to external tools available for you.
+
+#### Components of MCP
+1. MCP Server: This is the server that hosts the MCP protocol and allows models to connect to it. The MCP server is responsible for managing the connections and providing the necessary context to the models.
+2. MCP Client: This is the client that models use to connect to the MCP server. The MCP client is responsible for sending requests to the MCP server and receiving responses from it.
+3. MCP Tools: These are the external tools that models can access through the MCP protocol. MCP tools can be anything from databases, APIs, or other models that provide additional context for the model
+4. MCP Protocol: This is the set of rules and guidelines that govern how models can access and use external context through the MCP protocol. The MCP protocol defines how models can request context, how the MCP server should respond to those requests, and how models can use the retrieved context in their responses.
+5. MCP Schema: This is the schema that defines the structure of the context that models can retrieve through the MCP protocol. The MCP schema specifies the format of the context, the types of data that can be included, and any constraints or limitations on the context that can be retrieved.
+6. MCP Workflow: This is the workflow that models follow when using the MCP protocol to access external context. The MCP workflow typically involves the model sending a request for context to the MCP server, the MCP server retrieving the relevant context from the MCP tools, and then the model using that context to generate a response.
+7. MCP Use Cases: MCP can be used in a variety of applications, such as chatbots, virtual assistants, and other AI systems that require access to external context to generate accurate and relevant responses. For example, a chatbot could use MCP to access a database of customer information to provide personalized responses to customer inquiries.
+8. MCP Benefits: MCP provides several benefits for AI systems, including improved accuracy and relevance of responses, increased flexibility in accessing external context, and the ability to integrate with a wide range of tools and data sources. By using MCP, AI systems can generate more informed and contextually appropriate responses, leading to better user experiences and more effective interactions.
+9. MCP Challenges: While MCP offers many benefits, it also presents some challenges. One of the main challenges is ensuring that the retrieved context is accurate and relevant to the model's response. Additionally, there may be issues with latency and performance when retrieving context from external sources, especially if the context is large or complex. Finally, there may be security and privacy concerns when accessing sensitive data through MCP, which requires careful consideration and implementation of appropriate safeguards.
+10. MCP Implementation: To implement MCP, you would typically need to set up an MCP server that can handle requests from models and provide the necessary context. You would also need to define the MCP schema and create MCP tools that can retrieve the relevant context for the models. Finally, you would need to integrate the MCP client into your models so that they can access the MCP server and use the retrieved context in their responses.
+11. MCP Example: Below is a simple example of how MCP can be used in a chatbot application. In this example, the chatbot uses MCP to access a database of customer information to provide personalized responses to customer inquiries.
+
+```python
+# Define the MCP tool to retrieve customer information from a database
+def get_customer_info(customer_id):
+    # Code to connect to the database and retrieve customer information based on the customer_id
+    return customer_info        
+# Set up the MCP server and register the tool
+mcp_server = MCPServer()
+mcp_server.register_tool("get_customer_info", get_customer_info)
+# Define the chatbot model and integrate the MCP client
+class ChatbotModel:
+    def __init__(self):
+        self.mcp_client = MCPClient("http://mcp_server_url")
+    def generate_response(self, user_input):
+        # Code to process user input and determine if customer information is needed
+        if needs_customer_info:         
+            customer_id = extract_customer_id(user_input)
+            customer_info = self.mcp_client.request_context("get_customer_info", {"customer_id": customer_id})
+            # Use the retrieved customer information to generate a personalized response
+            response = generate_personalized_response(customer_info)
+        else:
+            # Generate a response without needing customer information
+            response = generate_generic_response(user_input)
+        return response
+```
+
